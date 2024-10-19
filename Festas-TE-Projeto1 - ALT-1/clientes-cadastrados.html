@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/clientes.css" />
+    <title>Clientes Cadastrados</title>
+  </head>
+  <body>
+    <div class="cabecalho">
+      <h2>Festas & Eventos</h2>
+      <h3>Dados dos Clientes</h3>
+    </div>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Telefone</th>
+          <th>Assunto</th>
+          <th>Mensagem</th>
+        </tr>
+      </thead>
+      <tbody id="clientes-tbody"></tbody>
+    </table>
+
+    <script>
+      // Recupera os dados do LocalStorage
+      const clientes = JSON.parse(localStorage.getItem("clientes")) || [];
+      const tbody = document.getElementById("clientes-tbody");
+
+      clientes.forEach((cliente) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+        <td>${cliente.nome}</td>
+        <td>${cliente.email}</td>
+        <td>${cliente.telefone}</td>
+        <td>${cliente.assunto}</td>
+        <td>${cliente.mensagem}</td>
+      `;
+        tbody.appendChild(tr);
+      });
+    </script>
+  </body>
+</html>
